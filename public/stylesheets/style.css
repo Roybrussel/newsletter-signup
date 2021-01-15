@@ -7,6 +7,10 @@ body {
     background-color: #E6EFF5 !important;
 }
 
+a {
+    text-decoration: none !important;
+}
+
 .form-container {
     height: 100%;
     display: flex;
@@ -34,4 +38,9 @@ body {
 .btn {
     margin-top: 10px;
     width: 100%;
+}
+
+.portfolio-link {
+    margin-top: 20px;
+    text-align: center;
 }

@@ -1,0 +1,37 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: #E6EFF5 !important;
+}
+
+.form-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-control {
+    border-radius: 0 !important;
+}
+
+.firstname-input {
+    border-radius: 5px 5px 0 0 !important;
+}
+
+.lastname-input {
+    border-top: none !important;
+    border-bottom: none !important;
+}
+
+.email-input {
+    border-radius: 0 0 5px 5px !important;
+}
+
+.btn {
+    margin-top: 10px;
+    width: 100%;
+}

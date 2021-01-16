@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
@@ -32,21 +34,34 @@ app.post("/", function (req, res) {
 
   const jsonData = JSON.stringify(data);
 
-  const url = "https://us7.api.mailchimp.com/3.0/lists/997eab9f3e";
-
   const options = {
+    url: "https://us7.api.mailchimp.com/3.0/lists/997eab9f3e",
     method: "POST",
-    auth: "roybrussel:e2664e3114d69e49ab6bd4d068780713-us7",
+    headers: {
+      Authorization: `apikey ${process.env.API_KEY}`,
+    },
+    body: jsonData,
   };
 
-  const request = https.request(url, options, function (response) {
+  request(options, (err, response, body) => {
+    if (err) {
+      res.sendFile(__dirname + "/failure.html");
+    }
+    if (response.statusCode === 200) {
+      console.log("Succesfully submiting subscription");
+      res.sendFile(__dirname + "/success.html");
+    } else {
+      console.log("Error submiting subscription");
+      console.log(response.statusCode);
+      console.log(response);
+
+      res.sendFile(__dirname + "/failure.html");
+    }
     response.on("data", function (data) {
-      console.log("TEST");
+      console.log(data);
+      // console.log(JSON.parse(data))
     });
   });
-
-  request.write(jsonData);
-  request.end;
 });
 
 app.listen(3000, function (req, res) {

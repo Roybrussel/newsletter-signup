@@ -59,7 +59,6 @@ app.post("/", function (req, res) {
     }
     response.on("data", function (data) {
       console.log(data);
-      // console.log(JSON.parse(data))
     });
   });
 });
